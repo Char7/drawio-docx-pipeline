@@ -65,4 +65,4 @@ In an observed workflow, diagrams.net web exported **a dark-background PNG** des
 
 ## Public repository hygiene
 
-This repository contains **only the skill, original generic examples, and source scripts**—no private lesson PDFs, generated student documents, project folders, credential files, or font binaries. Do not publish user materials without permission. No open-source license has been selected yet; public visibility alone does not confer reuse rights.
+This repository contains **only the skill, original generic examples, and source scripts**—no private lesson PDFs, generated student documents, project folders, credential files, or font binaries. Do not publish user materials without permission. Licensed under the [MIT License](LICENSE), Copyright (c) 2026 Char7. You may use, modify, and distribute the skill (including commercially), provided the MIT copyright and permission notice is retained.
