@@ -1,0 +1,27 @@
+# Do not commit project inputs, personally identifying materials, or credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+*.token
+**/backup/
+**/__pycache__/
+.venv/
+venv/
+*.pyc
+.DS_Store
+Thumbs.db
+# Example output documents and figures are generated locally
+*.docx
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.pptx
+*.xlsx
+*.log
+*.tmp

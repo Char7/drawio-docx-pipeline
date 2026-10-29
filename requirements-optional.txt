@@ -1,0 +1,3 @@
+# Optional dependencies for image inspection and SVG rasterization
+Pillow>=10.0
+CairoSVG>=2.7
