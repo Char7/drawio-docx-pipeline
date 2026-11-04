@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "figure_id": "FIG-LEAF-STRUCTURE-01",
+  "indicator": "General example (not a specific curriculum identifier)",
+  "purpose": "Show only a single leaf surface for an editable educational diagram",
+  "grade": "primary",
+  "asset_plan_status": "PLANNED_FOR_GENERATION",
+  "generation_allowed": true,
+  "approval": "PENDING_USER_REVIEW",
+  "target_diagram": {
+    "page": "A4 portrait",
+    "canvas_px": [
+      1600,
+      1000
+    ],
+    "background": "opaque white",
+    "labels_in_drawio": true
+  },
+  "generation_budget": {
+    "initial_images": 1,
+    "avoid_unneeded_collage": true,
+    "retry_only_after_qa_reason": true
+  },
+  "assets": [
+    {
+      "asset_id": "LEAF-CLOSEUP-01",
+      "subject": "One healthy broad leaf, clearly visible leaf veins",
+      "use": "Place in the left image box of a diagram; editable labels will be added in draw.io",
+      "scientific_reference": "Verified educational leaf morphology source to be added by the project",
+      "required_visible_parts": [
+        "leaf lamina",
+        "midrib",
+        "lateral veins",
+        "petiole"
+      ],
+      "do_not_depict": [
+        "entire forest",
+        "tree",
+        "infographic",
+        "caption",
+        "text",
+        "arrows",
+        "decorative border"
+      ],
+      "target_aspect_ratio": "1:1",
+      "target_resolution_px": [
+        900,
+        900
+      ],
+      "planned_drawio_box_px": [
+        380,
+        380
+      ],
+      "minimum_useful_subject_coverage": 0.85,
+      "maximum_expected_discard_fraction": 0.1,
+      "reuse_candidate": "NONE_VERIFIED",
+      "preferred_background": "transparent",
+      "source_image_status": "NOT_GENERATED",
+      "qa_status": "NOT_STARTED",
+      "prompt": "Exactly one realistic educational broad green leaf showing midrib, lateral veins and petiole, centered and tightly composed with natural margins on transparent background; no surrounding scene.",
+      "negative_prompt": "No text, no letters, no annotations, no arrows, no infographic, no page layout, no watermarks."
+    }
+  ]
+}
