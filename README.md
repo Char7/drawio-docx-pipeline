@@ -12,12 +12,22 @@ A reusable agent skill for making **editable diagram sources** in [draw.io / dia
 | `.png` | **Not editable** as separate objects; regenerate it from the source |
 | `.docx` | Body text, titles, tables, image position/size; **not individual PNG labels** |
 
+## Reduce wasted image generation
+
+**Plan before you generate:** If a diagram needs a fish, leaf, circuit part, or one anatomical object, generate **that isolated object**—not a decorated full-page poster that will be cropped. Use an [asset scope plan](references/asset-plan-template.md) for the required subject and visible parts, target draw.io box, aspect ratio, print resolution, transparent/white background, exclusions and reuse check. Aim for at least 80% usable subject and no more than 15% anticipated discard. Always archive all generated originals (including failures), preserve edited derivatives separately, and record SHA/provenance; only QA-passed assets can be embedded.
+
+Use installed draw.io **Desktop first** for open/edit/Save As/reopen/export. If native export fails, document the actual application error and use an explicitly labeled fallback. Keep every editable `.drawio` revision. Neither a web view nor XML validity proves successful native editing.
+
+```bash
+python scripts/check_asset_plan.py examples/scoped-image-plan.json --ready
+```
+
 ## Workflow
 
 ```text
-Verified content / FIG-SPEC
+Verified content / FIG-SPEC / scoped asset plan
           |
-Optional text-free generated illustration
+Only needed isolated, text-free subject asset
           v
 draw.io: white canvas + shapes + labels + arrows
           |
@@ -48,6 +58,7 @@ See [SKILL.md](SKILL.md), [workflow](references/workflow.md), and [QA checklist]
 ### Optional validators
 
 ```bash
+python scripts/check_asset_plan.py examples/scoped-image-plan.json --ready
 python scripts/check_drawio.py examples/three_steps.drawio --require-white
 python -m pip install -r requirements-optional.txt
 python scripts/check_png.py figure.png --min-width 1600
