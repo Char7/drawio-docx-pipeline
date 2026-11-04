@@ -6,6 +6,14 @@ Keep one stable Figure ID across the source, export, and document reference. Exa
 
 Choose the figure structure based on what learners must understand—not on decoration. A science flowchart, classification tree, and electrical circuit require different layout semantics.
 
+## 1A. Scope AI source artwork before generation (FIG-0A)
+
+- Check whether an approved existing asset already shows the necessary structure; reuse instead of re-generating.
+- Identify each **individual image subject** needed in the final draw.io, exact body part or whole organism/system, and what must not appear. For a part, request that part directly—not a large infographic to crop.
+- Describe draw.io box, aspect ratio, target print pixel dimensions, transparent/white background, scientific references, prompt and exclusion rules. Target >=80% useful subject occupancy, <=15% planned discard/crop unless a justified exception is recorded before generation.
+- Never generate labels, arrows, cards, full-lesson graphics or decorations that should be made as editable elements in draw.io.
+- Store **all** original generated images including wrong-topic/rejected trials, immutable SHA/provenance, separate derived crops; archiving is not approval. See [asset plan](asset-plan-template.md) and `scripts/check_asset_plan.py`.
+
 ## 2. Draw.io editing
 
 - Create a white, opaque diagram page; set the page/background color to `#FFFFFF`.
@@ -13,9 +21,11 @@ Choose the figure structure based on what learners must understand—not on deco
 - Place any original generated source art into the diagram **before** adding text, callouts, or relations.
 - Embed source art where supported; if assets are linked, confirm links survive reopen and transfer to other devices.
 - For electrical circuits, optics, forces, measurement scales and other exact figures, use explicit symbols/coordinates rather than relying on an illustration model to infer correctness.
-- Save the `.drawio` file, close it, reopen it, and edit a label to verify source portability.
+- Use locally installed **draw.io Desktop first** when available; web app only as documented fallback.
+- Save **each** `.drawio` version, even discarded trials, with a unique suffix. Never overwrite the previous edit without a backup.
+- Save the `.drawio` file, close it, reopen it, and edit a label to verify source portability. Record actual native UI roundtrip separately from XML parse.
 
-## 3. PNG export (primary)
+## 3. PNG export (native Desktop primary)
 
 1. In diagrams.net, choose **File → Export As → PNG**.
 2. Use a **Light** appearance (where a theme option is shown).
