@@ -52,3 +52,7 @@ python scripts/render_svg_png.py path/to/figure.svg path/to/figure.png --scale 2
 ```
 
 See [quality checks](references/qa-checklist.md) and the [README](README.md) for installation and limitations.
+
+## Editorial extensions (Thai A4 science notes)
+
+For a project that requires textbook-inspired figure layout, ImageGen-first illustration, academically formatted Word tables, separate memory-box tables, and word-safe Thai paragraphs, use [Editorial QA extension V3.2](references/editorial-quality-gates-v3-2.md). This includes mandatory visual endpoint QA for draw.io connectors, cloud ID/SHA traceability, and **native Word rendering of every page**. Component approval does **not** confer chapter approval; never overwrite approved artifacts. The extension is opt-in through the host project's rules.
