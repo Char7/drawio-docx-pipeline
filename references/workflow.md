@@ -74,3 +74,7 @@ FIG01 | indicator/topic | sources/pages | ./diagrams/FIG01.drawio
 - If the embedded image no longer loads after moving the `.drawio`, mark **NOT_VERIFIED** until portable embedding is confirmed.
 - If the requested font is substituted in Word, mark **FONT QA FAIL** until corrected.
 - If the user needs individual diagram labels editable directly within Word, **this is not that output**: it supplies an editable source `.drawio` paired with a raster PNG in Word.
+
+## 8. Editorial QA for Thai educational DOCX
+
+For the host project's specific textbook-style presentation and acceptance rules, apply [the V3.2 editorial QA extension](editorial-quality-gates-v3-2.md). In particular, don't treat separately stored source sentences as separate Word paragraphs; let Word flow the actual Thai prose until the margin. Check the *actual native Word render* for midword splits. Avoid indiscriminate U+200B/U+2060 insertion; if a word splits, adjust only that local word-boundary break and rerender. With textbook-inspired draw.io mind maps, verify that relational connectors actually touch their target vertices/cards, not just that edge XML is present. Academic tables and memory boxes must remain native Word tables and fit within A4 portrait text margins. Preserve version history and scoped approval statuses.
