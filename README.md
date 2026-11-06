@@ -77,3 +77,7 @@ In an observed workflow, diagrams.net web exported **a dark-background PNG** des
 ## Public repository hygiene
 
 This repository contains **only the skill, original generic examples, and source scripts**—no private lesson PDFs, generated student documents, project folders, credential files, or font binaries. Do not publish user materials without permission. Licensed under the [MIT License](LICENSE), Copyright (c) 2026 Char7. You may use, modify, and distribute the skill (including commercially), provided the MIT copyright and permission notice is retained.
+
+## Thai science-note editorial QA extension
+
+When a host project requires ImageGen-first isolated plant illustrations, native editable draw.io connectors, academically styled Word tables, one memory-box table per idea, and Thai word-safe A4 paragraphs, follow [the V3.2 editorial QA extension](references/editorial-quality-gates-v3-2.md). This includes checking connector endpoints against exported pixels, preserving every accepted/rejected file version, and validating **all Word pages natively**, not only OOXML structure. User approval is scoped to the specific artifact or component reviewed.
