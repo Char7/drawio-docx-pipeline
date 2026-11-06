@@ -34,3 +34,18 @@ Stop and report a concrete issue if:
 - required doc typography cannot be checked or shows substitution;
 - there is no editable `.drawio` source to accompany the PNG;
 - source/user material would be exposed to a public GitHub repository without permission.
+
+## Editorial extension acceptance gates
+
+| Gate | Required evidence | Mark FAIL / PENDING when |
+| --- | --- | --- |
+| PDF/Markdown source mapping | Correct cut-source page IDs and filtered Markdown stage | Old-page references or unreviewed RAW are substituted |
+| ImageGen-first isolated assets | Exact required subject/stage, original image + provenance/SHA | Full infographic, procedural substitute or unauthorized PDF copy |
+| Editable connector topology | Export preview *and* verified native source/target cells where relevant | Line ends short of its card, crosses text, or points at wrong node |
+| Academic Word tables | Balanced real table widths within A4 text margins | Table overflows or text is clipped |
+| Separate memory boxes | One native, independently spaced table per concept | Different memory concepts are one joined table |
+| Thai paragraph reflow | Coherent paragraph with normal Word line wrap, *native Word* screenshot | Every source line is its own paragraph, or a Thai word is ripped |
+| Word-wide visual review | Real Word screenshot/print preview for **every page** | Only HTML or OOXML checks exist |
+| Approval scope/version | Component approvals and exact accepted hashes separately recorded | Partial approval is promoted to whole-chapter approval |
+
+See [editorial-quality-gates-v3-2.md](editorial-quality-gates-v3-2.md) for the complete workflow and the warning against blanket zero-width/word-joiner insertion in Thai prose.
