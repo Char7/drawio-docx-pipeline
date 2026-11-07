@@ -2,6 +2,7 @@
 
 | Gate | What to inspect | Accept only when |
 | --- | --- | --- |
+| Programmatic authoring | Python + mxGraph XML source created without Computer Use | JSON spec and versioned .drawio exist; Desktop CLI export is separate; no silent browser/GUI fallback |
 | FIG-0A | AI asset plan **before** generation | Only necessary image subjects/parts, reuse check, target draw.io placement, >=80% useful subject and <=15% expected discard; no prebuilt poster/labels/arrows |
 | Source archive | Generated imagery and variants | Every generation, including rejects, saved as unmodified originals with hashes/provenance; derivatives linked separately; archives do not imply approval |
 | FIG-0 | Scientific/content reference, figure purpose, diagram logic | Terms, classifications, symbols, directions and quantities are source-supported |
@@ -25,6 +26,8 @@
 ## Stop conditions
 
 Stop and report a concrete issue if:
+- an agent tries browser/desktop Computer Use for ordinary diagram authoring without an explicit user request or fallback authorization;
+- draw.io Desktop CLI is not installed, and no approved non-GUI export route exists; do not fabricate native export PASS;
 - an image is about to be generated without an asset scope plan, or a large scene will be mostly cropped without scientific justification;
 - required images were generated but not archived with traceable SHA/source;
 - installed draw.io Desktop could not open/save/export and a fallback is mislabeled native;
