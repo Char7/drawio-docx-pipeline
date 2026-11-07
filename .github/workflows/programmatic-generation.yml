@@ -1,0 +1,34 @@
+name: Programmatic draw.io authoring (no Computer Use)
+
+on:
+  push:
+    paths:
+      - "scripts/generate_drawio.py"
+      - "scripts/test_generate_drawio.py"
+      - "scripts/export_drawio_cli.py"
+      - "examples/programmatic-three-steps.json"
+      - ".github/workflows/programmatic-generation.yml"
+  pull_request:
+    paths:
+      - "scripts/generate_drawio.py"
+      - "scripts/test_generate_drawio.py"
+      - "scripts/export_drawio_cli.py"
+      - "examples/programmatic-three-steps.json"
+      - ".github/workflows/programmatic-generation.yml"
+
+jobs:
+  xml-authoring:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Unit tests (stdlib only)
+        run: python -m unittest discover -s scripts -p "test_*.py" -v
+      - name: Build editable draw.io XML without browser
+        run: python scripts/generate_drawio.py examples/programmatic-three-steps.json /tmp/programmatic-three-steps.drawio --manifest /tmp/programmatic-three-steps-manifest.json
+      - name: Inspect generated graph and white background
+        run: python scripts/check_drawio.py /tmp/programmatic-three-steps.drawio --require-white
+      # The GitHub runner does not render via a draw.io Desktop CLI.
+      # Native PNG pixel QA and Word QA must occur on the equipped host machine.
