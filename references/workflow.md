@@ -1,5 +1,11 @@
 # Implementation workflow
 
+## Default non-GUI authoring route
+
+**Mandatory for normal figures:** JSON FIG-SPEC → `scripts/generate_drawio.py` (Python ElementTree/mxGraph) → versioned editable `.drawio` → `scripts/export_drawio_cli.py` (draw.io Desktop executable) → PNG pixel QA → editable Word body/tables + native Word QA. This does **not** require opening a browser or using Computer Use.
+
+Agents must **not** choose diagrams.net web mouse control or manual Desktop UI as the initial authoring method. If the programmatic generator cannot express a necessary complex feature, record a concrete blocker and obtain explicit permission for the GUI exception. Do not silently fall back. See [programmatic authoring details](programmatic-authoring.md).
+
 ## 1. Scope and Figure ID
 
 Keep one stable Figure ID across the source, export, and document reference. Example: `FIG01_EnergyFlow.drawio` → `FIG01_EnergyFlow.png` → `lesson.docx` + a FIG-SPEC.
@@ -21,23 +27,17 @@ Choose the figure structure based on what learners must understand—not on deco
 - Place any original generated source art into the diagram **before** adding text, callouts, or relations.
 - Embed source art where supported; if assets are linked, confirm links survive reopen and transfer to other devices.
 - For electrical circuits, optics, forces, measurement scales and other exact figures, use explicit symbols/coordinates rather than relying on an illustration model to infer correctness.
-- Use locally installed **draw.io Desktop first** when available; web app only as documented fallback.
+- Use the **Python mxGraph XML generator first**. Use installed draw.io **Desktop CLI for exporting**, not GUI clicks. Web/Computer Use authoring is by explicit approval only.
 - Save **each** `.drawio` version, even discarded trials, with a unique suffix. Never overwrite the previous edit without a backup.
 - Save the `.drawio` file, close it, reopen it, and edit a label to verify source portability. Record actual native UI roundtrip separately from XML parse.
 
-## 3. PNG export (native Desktop primary)
+## 3. PNG export (native Desktop CLI primary; no Computer Use)
 
-1. In diagrams.net, choose **File → Export As → PNG**.
-2. Use a **Light** appearance (where a theme option is shown).
-3. Turn **transparent background OFF**.
-4. Prefer scale 2× or 3×; verify legibility at the intended A4 print width.
-5. Export, reopen the downloaded PNG, and visually check:
-   - background **white**, not black or transparent;
-   - Thai labels render correctly, including vowels and tone marks;
-   - all arrows/lines point where intended and aren't cropped;
-   - objects have adequate contrast, no clipping or line overlap.
-
-A white background attribute in the draw.io XML is **not sufficient** to mark the export as PASS.
+1. Run `python scripts/generate_drawio.py examples/programmatic-three-steps.json output/FIG01_v01.drawio --manifest output/FIG01_v01.json`.
+2. Run `python scripts/check_drawio.py output/FIG01_v01.drawio --require-white` to check source structure.
+3. Run `python scripts/export_drawio_cli.py output/FIG01_v01.drawio output/FIG01_v01.png --drawio /path/to/draw.io --scale 2 --border 8`. The installed Desktop CLI runs without mouse clicks.
+4. Verify exported PNG is opaque white, Thai font/tones readable, no clipping, correct arrow direction and physical print sharpness. Structural XML checks are **not** visual validation.
+5. When the executable is missing, report `BLOCKED_NATIVE_EXPORT`; do not launch Computer Use automatically. Any non-GUI fallback must be supported and documented.
 
 ## 4. SVG → PNG fallback
 
