@@ -1,0 +1,83 @@
+{
+  "title": "สามขั้นตอน",
+  "page": {
+    "width": 1000,
+    "height": 440,
+    "background": "#FFFFFF"
+  },
+  "font_family": "TH SarabunPSK",
+  "nodes": [
+    {
+      "id": "heading",
+      "kind": "text",
+      "label": "ตัวอย่างแผนภาพสามขั้นตอน",
+      "x": 205,
+      "y": 35,
+      "width": 590,
+      "height": 62,
+      "bold": true,
+      "font_size": 29
+    },
+    {
+      "id": "step1",
+      "label": "วางแผน",
+      "x": 55,
+      "y": 160,
+      "width": 245,
+      "height": 110,
+      "fill": "#EAF3FF",
+      "stroke": "#3979C6",
+      "font_size": 27
+    },
+    {
+      "id": "step2",
+      "label": "สร้างแผนภาพ",
+      "x": 380,
+      "y": 160,
+      "width": 245,
+      "height": 110,
+      "fill": "#EAF6E7",
+      "stroke": "#5A9D5D",
+      "font_size": 27
+    },
+    {
+      "id": "step3",
+      "label": "ตรวจคุณภาพ",
+      "x": 705,
+      "y": 160,
+      "width": 245,
+      "height": 110,
+      "fill": "#FFF2DF",
+      "stroke": "#D9902F",
+      "font_size": 27
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "step1",
+      "target": "step2",
+      "exit": [
+        1,
+        0.5
+      ],
+      "entry": [
+        0,
+        0.5
+      ]
+    },
+    {
+      "id": "e2",
+      "source": "step2",
+      "target": "step3",
+      "exit": [
+        1,
+        0.5
+      ],
+      "entry": [
+        0,
+        0.5
+      ]
+    }
+  ]
+}
