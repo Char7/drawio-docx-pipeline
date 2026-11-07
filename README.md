@@ -4,6 +4,19 @@ A reusable agent skill for making **editable diagram sources** in [draw.io / dia
 
 **ภาษาไทย:** Skill สำหรับสร้าง Mind Map, แผนภาพวิทยาศาสตร์ และ Flowchart ด้วย draw.io โดยใช้พื้นหลังสีขาว เก็บไฟล์ `.drawio` ให้แก้กล่อง/ข้อความ/ลูกศรได้ ส่งออกเป็น PNG แล้วแทรกใน DOCX ที่ข้อความหลักและตารางยังแก้ไขได้
 
+## Default: programmatic authoring (no Computer Use)
+
+**Agents MUST generate editable .drawio with Python + mxGraph XML first, without browser clicks or GUI mouse automation.** Draw.io Desktop is used through its **CLI for PNG export**, not as a manually driven editor. Only a specifically requested/authorized GUI-only exception may use Computer Use; missing CLI support is **BLOCKED**, not permission for silent fallback.
+
+~~~bash
+python scripts/generate_drawio.py examples/programmatic-three-steps.json output/FIG01_v01.drawio --manifest output/FIG01_v01.json
+python scripts/check_drawio.py output/FIG01_v01.drawio --require-white
+python scripts/export_drawio_cli.py output/FIG01_v01.drawio output/FIG01_v01.png --drawio "/path/to/draw.io" --scale 2
+python -m unittest discover -s scripts -p "test_*.py"
+~~~
+
+See [programmatic authoring and strict no-Computer-Use policy](references/programmatic-authoring.md), plus the JSON example, generator and CLI exporter. Native export and visual connector/Thai font QA remain mandatory before Word.
+
 ## What is editable?
 
 | Artifact | Editable elements |
@@ -16,7 +29,7 @@ A reusable agent skill for making **editable diagram sources** in [draw.io / dia
 
 **Plan before you generate:** If a diagram needs a fish, leaf, circuit part, or one anatomical object, generate **that isolated object**—not a decorated full-page poster that will be cropped. Use an [asset scope plan](references/asset-plan-template.md) for the required subject and visible parts, target draw.io box, aspect ratio, print resolution, transparent/white background, exclusions and reuse check. Aim for at least 80% usable subject and no more than 15% anticipated discard. Always archive all generated originals (including failures), preserve edited derivatives separately, and record SHA/provenance; only QA-passed assets can be embedded.
 
-Use installed draw.io **Desktop first** for open/edit/Save As/reopen/export. If native export fails, document the actual application error and use an explicitly labeled fallback. Keep every editable `.drawio` revision. Neither a web view nor XML validity proves successful native editing.
+Use **Python + mxGraph XML first** to author the editable .drawio. Use draw.io **Desktop CLI** for native export and verify the actual rendered PNG. If export fails, record the error and use an expressly approved fallback; never silently use Computer Use. Keep every editable `.drawio` revision. Neither a web view nor XML validity proves successful native editing.
 
 ```bash
 python scripts/check_asset_plan.py examples/scoped-image-plan.json --ready
@@ -29,7 +42,7 @@ Verified content / FIG-SPEC / scoped asset plan
           |
 Only needed isolated, text-free subject asset
           v
-draw.io: white canvas + shapes + labels + arrows
+Python + editable mxGraph XML: white canvas + shapes + labels + arrows
           |
       Editable .drawio
           |
